@@ -1,4 +1,4 @@
 Flask==2.2.2               # Flask framework
 Flask-Cors==3.0.10         # Handle Cross-Origin Resource Sharing (CORS)
-gunicorn==20.1.0           # WSGI HTTP Server for UNIX (used for deployment)
+gunicorn          # WSGI HTTP Server for UNIX (used for deployment)
 requests==2.26.0           # For making HTTP requests (if needed in the future)
