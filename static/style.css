@@ -1,0 +1,87 @@
+/* style.css */
+
+html, body {
+    height: 100%;                  /* Full height */
+    margin: 0;                      /* No margin */
+    font-family: 'Arial', sans-serif; /* Set the font for the entire body */
+    background-color: #f5f5f5;      /* Background color for body */
+}
+
+.chatbox {
+    max-width: 600px;               /* Limit chatbox width */
+    margin: 30px auto;              /* Center chatbox horizontally and add space at the top */
+    background-color: white;        /* White background for the chatbox */
+    border-radius: 10px;            /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    display: flex;
+    flex-direction: column;
+    height: 80vh;                   /* Set height relative to viewport */
+}
+
+.chat-header {
+    background-color: #007bff;      /* Header background */
+    color: white;                   /* White text in header */
+    padding: 15px;                  /* Padding inside the header */
+    text-align: center;             /* Center the text */
+    font-size: 18px;                /* Increase font size */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.chat-body {
+    flex: 1;                        /* Allow chat body to grow */
+    padding: 15px;                  /* Padding inside chat body */
+    overflow-y: auto;               /* Scroll if messages exceed height */
+    background-color: #f9f9f9;      /* Light background for the body */
+}
+
+.message {
+    max-width: 75%;                 /* Limit message width */
+    padding: 10px;                  /* Padding inside messages */
+    border-radius: 15px;            /* Rounded message bubbles */
+    margin-bottom: 10px;            /* Space between messages */
+    word-wrap: break-word;          /* Wrap long words */
+}
+
+.user-message {
+    background-color: #e5d5a3a0;      /* Light green for user messages */
+    align-self: flex-end;           /* Align user messages to the right */
+}
+
+.bot-message {
+    background-color: #f9e3e3;      /* White background for bot messages */
+    align-self: flex-start;         /* Align bot messages to the left */
+    border: 1px solid #e0e0e0;      /* Border around bot message */
+}
+
+.chat-input {
+    display: flex;                  /* Flex layout for input */
+    padding: 10px;                  /* Padding around input */
+    border-top: 1px solid #e0e0e0;  /* Border at the top of input */
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+input[type="text"] {
+    flex: 1;                        /* Make the input fill available space */
+    padding: 10px;                  /* Padding inside input */
+    font-size: 16px;                /* Larger font for input */
+    border: 1px solid #e0e0e0;      /* Light border around input */
+    border-radius: 5px;             /* Slightly rounded input */
+    margin-right: 10px;             /* Space between input and button */
+}
+
+button {
+    background-color: #007bff;      /* Blue background for button */
+    color: white;                   /* White text on button */
+    border: none;                   /* Remove border */
+    padding: 10px 15px;             /* Padding for button */
+    border-radius: 5px;             /* Rounded corners for button */
+    cursor: pointer;                /* Pointer cursor on hover */
+    font-size: 16px;                /* Larger font for button */
+}
+
+button:hover {
+    background-color: #0056b3;      /* Darker blue on hover */
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Enquiry Chatbot</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="chatbox">
+        <div class="chat-header">College Enquiry Chatbot</div>
+        <div class="chat-body" id="chat-body"></div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Ask something..." autofocus>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById('user-input').value;
+            var chatBody = document.getElementById('chat-body');
+
+            // Display user message
+            if (userInput.trim()) {
+                var userMessage = document.createElement('div');
+                userMessage.className = 'user-message message';
+                userMessage.innerText = userInput;
+                chatBody.appendChild(userMessage);
+                chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the bottom
+
+                // Clear input box
+                document.getElementById('user-input').value = '';
+
+                // Make request to the backend
+                fetch('/webhook', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        queryResult: {
+                            action: userInput // Pass user input as action
+                        }
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    var botMessage = document.createElement('div');
+                    botMessage.className = 'bot-message message';
+                    botMessage.innerText = data.fulfillmentText;
+                    chatBody.appendChild(botMessage);
+                    chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the bottom
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        }
+
+        // Detect Enter key for input field
+        document.getElementById('user-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage(); // Send message when Enter is pressed
+            }
+        });
+    </script>
+</body>
+</html>
